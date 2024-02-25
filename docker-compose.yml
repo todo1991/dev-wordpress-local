@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+  mariadb:
+    image: mariadb:10.6.14-focal
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    expose:
+      - 3306
+    volumes:
+      - type: bind
+        source: ./mariadb
+        target: /var/lib/mysql
+
+  wordpress_instance:
+    build:
+      context: ./dockerfile
+      dockerfile: Dockerfile.wp
+    image: todo1991/apache_wordpress_debian
+    container_name: wordpress_instance
+    restart: unless-stopped
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - type: bind
+        source: ./public_html
+        target: /var/www/html

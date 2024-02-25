@@ -1,0 +1,6 @@
+MARIADB_ROOT_PASSWORD=rootpassword
+MARIADB_DATABASE=thanhtruclabdb
+MARIADB_USER=thanhtruclabuser
+MARIADB_PASSWORD=1iF1ITmKQNfQ
+DOMAIN=cozy.thanhtruc.com
+EMAIL=tanqui1010191@gmail.com
