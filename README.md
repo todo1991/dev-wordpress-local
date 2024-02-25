@@ -18,3 +18,8 @@ docker compose up -d
 127.0.0.1 domain.com
 ```
 Sau khi lưu lại có thể truy cập domain.com trên trình duyệt, do không có cấu hình ssl nên  chú ý truy cập qua http:// chứ không phải https://
+Để chỉnh sửa code, do  file được docker ghi dưới user khác với user sử dụng nên cách đơn giản nhất là chmod 777 toàn bộ thử mục chứa code
+```
+sudo su
+chmod -R 777 public_html/
+```
