@@ -23,3 +23,7 @@ Sau khi lưu lại có thể truy cập domain.com trên trình duyệt, do khô
 sudo su
 chmod -R 777 public_html/
 ```
+# Hướng dẫn backup database của webiste
+```
+source .env && docker compose  exec mariadb mariadb-dump --databases ${MARIADB_DATABASE} -u${MARIADB_USER} -p${MARIADB_PASSWORD} > mariadb-dump-$(date +%F_%H-%M-%S).sql
+```
