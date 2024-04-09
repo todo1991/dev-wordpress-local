@@ -27,7 +27,7 @@ chmod -R 777 public_html/
 ```
 source .env && docker compose  exec mariadb mariadb-dump --databases ${MARIADB_DATABASE} -u${MARIADB_USER} -p${MARIADB_PASSWORD} > mariadb-dump-$(date +%F_%H-%M-%S).sql
 ```
-Hướng dẫn dùng wpcli, chú ý là phải đứng trong  thư mục  compose mới có thể hoạt động
+# Hướng dẫn dùng wpcli, chú ý là phải đứng trong  thư mục  compose mới có thể hoạt động
 Cú pháp gọi wpcli
 ```
 docker compose run -ti --rm --no-deps --quiet-pull wpcli ...
