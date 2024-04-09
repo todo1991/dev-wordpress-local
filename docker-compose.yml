@@ -36,3 +36,16 @@ services:
       - type: bind
         source: ./public_html
         target: /var/www/html
+
+  wpcli:
+    image: wordpress:cli
+    container_name: wpcli
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - type: bind
+        source: ./public_html
+        target: /var/www/html
