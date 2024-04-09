@@ -27,3 +27,21 @@ chmod -R 777 public_html/
 ```
 source .env && docker compose  exec mariadb mariadb-dump --databases ${MARIADB_DATABASE} -u${MARIADB_USER} -p${MARIADB_PASSWORD} > mariadb-dump-$(date +%F_%H-%M-%S).sql
 ```
+Hướng dẫn dùng wpcli, chú ý là phải đứng trong  thư mục  compose mới có thể hoạt động
+Cú pháp gọi wpcli
+```
+docker compose run -ti --rm --no-deps --quiet-pull wpcli ...
+```
+Ví dụ về wpcli:
+Thay đổi tên miền webiste
+```
+docker compose run -ti --rm --no-deps --quiet-pull wpcli option get home
+docker compose run -ti --rm --no-deps --quiet-pull wpcli option update home 'https://example.com'
+docker compose run -ti --rm --no-deps --quiet-pull wpcli option update siteurl 'https://example.com'
+```
+Thay đổi mật khẩu user trong Wordpress
+```
+docker compose run -ti --rm --no-deps --quiet-pull wpcli user list
+docker compose run -ti --rm --no-deps --quiet-pull wpcli user set-role 1 administrator
+docker compose run -ti --rm --no-deps --quiet-pull wpcli user update 1 --user_pass=lxA6J1JwjZ1S
+```
