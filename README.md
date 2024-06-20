@@ -45,3 +45,13 @@ docker compose run -ti --rm --no-deps --quiet-pull wpcli user list
 docker compose run -ti --rm --no-deps --quiet-pull wpcli user set-role 1 administrator
 docker compose run -ti --rm --no-deps --quiet-pull wpcli user update 1 --user_pass=lxA6J1JwjZ1S
 ```
+# Tắt OPcache
+Mặc định có bật opcache, muốn tắt thì thay đổi file `Dockerfile.wp` dòng `echo "opcache.enable=1"` thành `echo "opcache.enable=0"` sau đó  build lại image mới
+```
+docker compose build wordpress_instance
+```
+Sau đó  tắt và khởi động lại với  Image mới
+```
+docker compose down -v
+docker compose up -d
+```
